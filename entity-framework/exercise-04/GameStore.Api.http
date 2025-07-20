@@ -1,0 +1,35 @@
+@baseUrl = "http://localhost:5236"
+
+GET {{baseUrl}}/games
+
+--
+
+GET {{baseUrl}}/games/1
+
+--
+
+POST {{baseUrl}}/games
+Content-Type: application/json
+
+{
+    "name": "The Legend of Zelda: Breath of the Wild",
+    "genre": "Action-adventure",
+    "price": 59.99,
+    "releaseDate": "2017-03-03"
+}
+
+--
+
+PUT {{baseUrl}}/games/1
+Content-Type: application/json
+
+{
+    "name": "The Legend of Zelda: Breath of the Wild - Updated",
+    "genre": "Action-adventure",
+    "price": 49.99,
+    "releaseDate": "2017-03-03"
+}
+
+--
+
+DELETE {{baseUrl}}/games/1
