@@ -1,0 +1,24 @@
+{
+  "version": "0.2",
+  "language": "en-GB",
+  "words": [
+    "adaptee",
+    "implementor"
+  ],
+  "flagWords": [
+    "hte",
+    "wehn"
+  ],
+  "ignorePaths": [
+    "*.lock",
+    ".config",
+    ".husky",
+    "dep",
+    "**/wwwroot/lib"
+  ],
+  "ignoreWords": [
+    "bunfig",
+    "linq",
+    "yumba"
+  ]
+}

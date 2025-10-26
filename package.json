@@ -1,19 +1,21 @@
 {
-  "name": "dotnet-training",
-  "packageManager": "yarn@4.5.3",
+  "name": "@SamuGG/dotnet-training",
   "private": true,
   "description": ".NET Training",
+  "version": "1.0.0",
+  "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "github:SamuGG/dotnet-training"
+    "url": "https://github.com/SamuGG/dotnet-training.git"
   },
   "scripts": {
-    "postinstall": "husky"
+    "prepare": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "19.6.1",
-    "@commitlint/config-conventional": "19.6.0",
-    "husky": "9.1.7",
-    "lint-staged": "15.2.11"
+    "husky": "*",
+    "@commitlint/cli": "*",
+    "@commitlint/config-conventional": "*",
+    "lint-staged": "*",
+    "standard": "*"
   }
 }

@@ -3,13 +3,11 @@
     "MD013": false
   },
   "globs": [
-    "**/*.md"
+    "**/*.{md,markdown}"
   ],
+  "gitignore": true,
   "ignores": [
-    ".yarn/**",
-    "node_modules/**",
-    "**/bin",
-    "**/obj",
     "**/LICENSE*"
-  ]
+  ],
+  "noBanner": true
 }
