@@ -1,0 +1,112 @@
+﻿@using RazorTemplate.Common
+@using System.Globalization
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Sales Order</title>
+    <style>
+        table.order-items {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table.order-items th,
+        table.order-items td {
+            padding: 0.5em 1em;
+        }
+
+        table.order-items thead th {
+            border-bottom: 2px solid #000;
+        }
+
+        table.order-items tbody tr:not(:has(+ tr td.order-line-subheading)) td {
+            border-bottom: 1px solid #ccc;
+        }
+
+        table.order-items tbody td.order-line-subheading {
+            padding: 0 2em;
+            font-style: italic;
+        }
+
+        table.order-items tfoot td {
+            border-top: 2px solid #000;
+            font-weight: bold;
+        }
+
+        dl.order-metadata {
+            display: grid;
+            grid-template-columns: max-content auto;
+        }
+
+        dl.order-metadata dt {
+            grid-column-start: 1;
+        }
+
+        dl.order-metadata dd {
+            grid-column-start: 2;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Sales Order Details</h1>
+    <h2>Order @Order.OrderId</h2>
+
+    <dl class="order-metadata">
+        <dt>Customer:</dt>
+        <dd>@Order.Customer.FirstName @Order.Customer.LastName</dd>
+        <dt>Order Date:</dt>
+        <dd>@Order.OrderDate.ToString("F", DateTimeFormat)</dd>
+    </dl>
+
+    <table class="order-items">
+        <thead>
+            <tr>
+                <th align="left">Product</th>
+                <th align="right">Quantity</th>
+                <th align="right">Unit Price</th>
+                <th align="right">Subtotal</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderLine line in Order.OrderLines)
+            {
+                <tr>
+                    <td>@line.OrderItem.Title</td>
+                    <td align="right">@line.Quantity</td>
+                    <td align="right">@line.OrderItem.UnitPrice.ToString("C", NumberFormat)</td>
+                    <td align="right">@line.Subtotal.ToString("C", NumberFormat)</td>
+                </tr>
+
+                @if (!string.IsNullOrEmpty(line.OrderItem.Subheading))
+                {
+                    <tr>
+                        <td colspan="4" class="order-line-subheading">@line.OrderItem.Subheading</td>
+                    </tr>
+                }
+            }
+        </tbody>
+        <tfoot>
+            <tr>
+                <td colspan="3" align="right">Total:</td>
+                <td align="right">@Order.OrderLines.Sum(line => line.Subtotal).ToString("C", NumberFormat)</td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+
+</html>
+
+@code {
+    [Parameter, EditorRequired]
+    public SalesOrder Order { get; set; } = null!;
+
+    [Parameter, EditorRequired]
+    public NumberFormatInfo NumberFormat { get; set; } = null!;
+
+    [Parameter, EditorRequired]
+    public DateTimeFormatInfo DateTimeFormat { get; set; } = null!;
+}

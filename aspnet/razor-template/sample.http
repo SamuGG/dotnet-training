@@ -1,0 +1,41 @@
+POST http://localhost:5104/sales/template/es-ES
+Content-Type: application/json
+
+{
+  "orderId": "20251026T1130-0001",
+  "orderDate": "2025-10-26T11:30:00",
+  "customer": {
+    "firstName": "Samuel",
+    "lastName": "Granados"
+  },
+  "orderLines": [
+    {
+      "orderItem": {
+        "title": "Shirts M White",
+        "subheading": "Slim fit",
+        "unitPrice": 12.95
+      },
+      "quantity": 1,
+      "subTotal": 12.95
+    },
+    {
+      "orderItem": {
+        "title": "Jeans 40 Blue Siynny",
+        "unitPrice": 25.49
+      },
+      "quantity": 1,
+      "subTotal": 25.49
+    },
+    {
+      "orderItem": {
+        "title": "Socks Pack2 Black",
+        "subheading": "Neutral silk blend",
+        "unitPrice": 9.99
+      },
+      "quantity": 2,
+      "subTotal": 19.98
+    }
+  ]
+}
+
+###
