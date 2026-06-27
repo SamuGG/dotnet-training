@@ -3,6 +3,7 @@
   "language": "en-GB",
   "words": [
     "adaptee",
+    "blazor",
     "implementor"
   ],
   "flagWords": [
@@ -17,8 +18,11 @@
     "**/wwwroot/lib"
   ],
   "ignoreWords": [
+    "apiservice",
     "bunfig",
     "linq",
+    "solidjs",
+    "weatherforecast",
     "yumba"
   ]
 }
